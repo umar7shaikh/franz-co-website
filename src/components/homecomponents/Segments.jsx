@@ -382,7 +382,7 @@ const Segments = () => {
               <img 
                 src={currentSegment.image} 
                 alt={currentSegment.title}
-                className="w-full h-full rounded-xl shadow-lg object-cover"
+                className="w-full h-full rounded-xl  object-cover"
                 style={{
                   mixBlendMode: 'darken'
                 }}
