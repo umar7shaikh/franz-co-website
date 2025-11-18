@@ -45,7 +45,7 @@ const Home = () => {
       </div>
       <Steps />
       <Testimonials />
-      <BlogSection />
+      {/* <BlogSection /> */}
       <CTASection />  
       <ContactSection />
       <Footer />

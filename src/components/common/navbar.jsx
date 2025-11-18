@@ -63,7 +63,7 @@ const Navbar = () => {
         `}
       </style>
 
-      <header className="w-full bg-white shadow-sm h-18 nav-wrapper">
+      <header className="sticky top-0 z-50 w-full bg-white shadow-sm h-18 nav-wrapper">
         <nav className="max-w-[1920px] mx-auto h-[72px] flex items-center px-4 nav-inner">
           {/* Logo */}
           <Link to="/" className="flex items-center h-[36px] mr-10 font-poppins">

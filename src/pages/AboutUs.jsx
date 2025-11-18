@@ -26,9 +26,9 @@ const AboutUs = () => {
         <ImpactStats />
         <WhyChooseUs />
         <Leadership />
-        <PartnersCertifications />
+        {/* <PartnersCertifications /> */}
         <Serve />
-        <Recognition />
+        {/* <Recognition /> */}
         <Testimonials />
         <Commitment />
         <ContactDetails />

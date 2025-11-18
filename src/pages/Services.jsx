@@ -25,7 +25,7 @@ const Services = () => {
         <Corporate />
         <Hotel />
         <Private />
-        <Comparison />
+        {/* <Comparison /> */}
         <AddServices /> 
         <AmenityCTASection />
         <ContactDetails2 />
