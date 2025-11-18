@@ -81,7 +81,8 @@ const Segments = () => {
 
 
   return (
-    <section className="w-full py-12 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-16" style={{ backgroundColor: '#F9ECEA' }}>
+    <section className="hidden md:block w-full py-0 md:py-12 md:sm:py-16 md:lg:py-20 px-0 md:px-4 md:sm:px-8 md:lg:px-16" style={{ backgroundColor: '#F9ECEA' }}>
+
       {/* Main Container with specified dimensions */}
       <div 
         className="mx-auto flex flex-col"

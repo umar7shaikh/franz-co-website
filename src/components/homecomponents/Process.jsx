@@ -99,207 +99,241 @@ const Process = () => {
   };
 
   return (
-    <section 
-      className="w-full flex justify-center items-center px-4 sm:px-8 lg:px-16" 
-      style={{ 
-        backgroundColor: 'white',
-        paddingTop: '112px',
-        paddingBottom: '112px'
-      }}
-    >
-      {/* Main Container - Centered */}
-      <div 
-        style={{
-          width: '100%',
-          maxWidth: '1280px',
-          opacity: 1
+    <>
+      <style>
+        {`
+          @media (max-width: 767px) {
+            .main-heading {
+              font-size: 28px !important;  /* Increased from 24px */
+              line-height: 1.2 !important;
+              letter-spacing: 0% !important;
+              word-break: break-word !important;
+              overflow-wrap: break-word !important;
+              hyphens: auto !important;
+              max-width: 100% !important;
+              margin: 0 !important;
+              padding: 0 !important;
+              text-align: left !important;
+            }
+            
+            .process-label {
+              text-align: left !important;
+              margin: 0 !important;
+              padding: 0 !important;
+            }
+            
+            @media (max-width: 480px) {
+              .main-heading {
+                font-size: 24px !important;  /* Increased from 20px */
+                line-height: 1.15 !important;
+              }
+            }
+          }
+        `}
+      </style>
+      
+      <section 
+        className="w-full flex justify-center items-center px-4 sm:px-8 lg:px-16" 
+        style={{ 
+          backgroundColor: 'white',
+          paddingTop: '112px',
+          paddingBottom: '112px'
         }}
       >
-        {/* Header Section - Centered */}
+        {/* Main Container - Centered */}
         <div 
-          className="mx-auto"
           style={{
             width: '100%',
-            maxWidth: '768px',
-            marginBottom: '80px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '16px'
+            maxWidth: '1280px',
+            opacity: 1
           }}
         >
-          {/* Process Label */}
-          <p 
-            className="font-poppins"
-            style={{
-              fontWeight: 600,
-              fontSize: '16px',
-              lineHeight: '150%',
-              letterSpacing: '0%',
-              color: '#C34A36',
-              opacity: 1
-            }}
-          >
-            Process
-          </p>
-
-          {/* Main Heading */}
-          <h2 
-            className="font-unbounded"
-            style={{
-              fontWeight: 500,
-              fontSize: '58px',
-              lineHeight: '120%',
-              letterSpacing: '-1%',
-              color: '#18191A',
-              opacity: 1
-            }}
-          >
-            Five Phases. Zero Hassles. One Partner for Your Entire Fitness Amenity.
-          </h2>
-        </div>
-
-        {/* Timeline Section - Centered */}
-        <div 
-          className="mx-auto"
-          style={{ 
-            position: 'relative', 
-            width: '100%',
-            maxWidth: '750px'
-          }}
-        >
-          {/* Vertical Line */}
+          {/* Header Section - Centered */}
           <div 
+            className="mx-auto"
             style={{
-              position: 'absolute',
-              left: '0',
-              top: '0',
-              bottom: '0',
-              width: '2px',
-              backgroundColor: '#E5E5E5',
-              zIndex: 1
-            }}
-          />
-
-          {/* Phase Cards Container */}
-          <div 
-            style={{
+              width: '100%',
+              maxWidth: '768px',
+              marginBottom: '80px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '48px',
-              position: 'relative'
+              gap: '16px'
             }}
           >
-            {phases.map((phase, index) => {
-              const isCompleted = getPhaseStatus(phase.id);
-              const isCurrentActive = activePhase === phase.id;
+            {/* Process Label */}
+            <p 
+              className="font-poppins"
+              style={{
+                fontWeight: 600,
+                fontSize: '16px',
+                lineHeight: '150%',
+                letterSpacing: '0%',
+                color: '#C34A36',
+                opacity: 1
+              }}
+            >
+              Process
+            </p>
 
-              return (
-                <div 
-                  key={phase.id}
-                  ref={(el) => (phaseRefs.current[index] = el)}
-                  style={{
-                    position: 'relative',
-                    paddingLeft: isCurrentActive ? '94.5px' : '62.5px',
-                    transition: 'padding-left 0.5s ease'
-                  }}
-                >
-                  {/* Timeline Dot */}
-                  <div 
-                    style={{
-                      position: 'absolute',
-                      left: '-6px',
-                      top: '32px',
-                      width: '12px',
-                      height: '12px',
-                      borderRadius: '50%',
-                      backgroundColor: isCompleted ? '#C34A36' : '#E5E5E5',
-                      border: '2px solid white',
-                      transition: 'all 0.5s ease',
-                      zIndex: 10
-                    }}
-                  />
+            {/* Main Heading */}
+            <h2 
+              className="font-unbounded main-heading"
+              style={{
+                fontWeight: 500,
+                fontSize: '58px',
+                lineHeight: '120%',
+                letterSpacing: '-1%',
+                color: '#18191A',
+                opacity: 1
+              }}
+            >
+              Five Phases. Zero Hassles. One Partner for Your Entire Fitness Amenity.
+            </h2>
+          </div>
 
-                  {/* Phase Card */}
+          {/* Timeline Section - Centered */}
+          <div 
+            className="mx-auto"
+            style={{ 
+              position: 'relative', 
+              width: '100%',
+              maxWidth: '750px'
+            }}
+          >
+            {/* Vertical Line */}
+            <div 
+              style={{
+                position: 'absolute',
+                left: '0',
+                top: '0',
+                bottom: '0',
+                width: '2px',
+                backgroundColor: '#E5E5E5',
+                zIndex: 1
+              }}
+            />
+
+            {/* Phase Cards Container */}
+            <div 
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '48px',
+                position: 'relative'
+              }}
+            >
+              {phases.map((phase, index) => {
+                const isCompleted = getPhaseStatus(phase.id);
+                const isCurrentActive = activePhase === phase.id;
+
+                return (
                   <div 
+                    key={phase.id}
+                    ref={(el) => (phaseRefs.current[index] = el)}
                     style={{
-                      width: '100%',
-                      maxWidth: '688px',
-                      borderRadius: '16px',
-                      padding: '32px',
-                      backgroundColor: 'white',
-                      opacity: 1,
-                      transition: 'all 0.5s ease',
-                      boxShadow: isCurrentActive 
-                        ? '0 8px 24px rgba(195, 74, 54, 0.15)' 
-                        : '0 4px 12px rgba(0,0,0,0.08)'
+                      position: 'relative',
+                      paddingLeft: isCurrentActive ? '94.5px' : '62.5px',
+                      transition: 'padding-left 0.5s ease'
                     }}
                   >
-                    {/* Phase Label */}
-                    <p 
-                      className="font-poppins font-semibold"
+                    {/* Timeline Dot */}
+                    <div 
                       style={{
-                        fontSize: '14px',
-                        color: isCompleted ? '#C34A36' : '#999999',
-                        transition: 'color 0.5s ease',
-                        marginBottom: '12px'
+                        position: 'absolute',
+                        left: '-6px',
+                        top: '32px',
+                        width: '12px',
+                        height: '12px',
+                        borderRadius: '50%',
+                        backgroundColor: isCompleted ? '#C34A36' : '#E5E5E5',
+                        border: '2px solid white',
+                        transition: 'all 0.5s ease',
+                        zIndex: 10
+                      }}
+                    />
+
+                    {/* Phase Card */}
+                    <div 
+                      style={{
+                        width: '100%',
+                        maxWidth: '688px',
+                        borderRadius: '16px',
+                        padding: '32px',
+                        backgroundColor: 'white',
+                        opacity: 1,
+                        transition: 'all 0.5s ease',
+                        boxShadow: isCurrentActive 
+                          ? '0 8px 24px rgba(195, 74, 54, 0.15)' 
+                          : '0 4px 12px rgba(0,0,0,0.08)'
                       }}
                     >
-                      {phase.label}
-                    </p>
+                      {/* Phase Label */}
+                      <p 
+                        className="font-poppins font-semibold"
+                        style={{
+                          fontSize: '14px',
+                          color: isCompleted ? '#C34A36' : '#999999',
+                          transition: 'color 0.5s ease',
+                          marginBottom: '12px'
+                        }}
+                      >
+                        {phase.label}
+                      </p>
 
-                    {/* Phase Title */}
-                    <h3 
-                      className="font-unbounded font-semibold"
-                      style={{
-                        fontSize: '28px',
-                        lineHeight: '130%',
-                        letterSpacing: '-1%',
-                        color: isCompleted ? '#18191A' : '#666666',
-                        transition: 'color 0.5s ease',
-                        marginBottom: '20px'
-                      }}
-                    >
-                      {phase.title}
-                    </h3>
+                      {/* Phase Title */}
+                      <h3 
+                        className="font-unbounded font-semibold"
+                        style={{
+                          fontSize: '28px',
+                          lineHeight: '130%',
+                          letterSpacing: '-1%',
+                          color: isCompleted ? '#18191A' : '#666666',
+                          transition: 'color 0.5s ease',
+                          marginBottom: '20px'
+                        }}
+                      >
+                        {phase.title}
+                      </h3>
 
-                    {/* Phase Points */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      {phase.points.map((point, pointIndex) => (
-                        <div key={pointIndex} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                          <span 
-                            style={{
-                              color: isCompleted ? '#C34A36' : '#CCCCCC',
-                              fontSize: '18px',
-                              transition: 'color 0.5s ease',
-                              lineHeight: '1.5',
-                              flexShrink: 0
-                            }}
-                          >
-                            •
-                          </span>
-                          <p 
-                            className="font-poppins"
-                            style={{
-                              fontSize: '14px',
-                              lineHeight: '150%',
-                              color: isCompleted ? '#404040' : '#999999',
-                              transition: 'color 0.5s ease',
-                              flex: 1
-                            }}
-                          >
-                            {point}
-                          </p>
-                        </div>
-                      ))}
+                      {/* Phase Points */}
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        {phase.points.map((point, pointIndex) => (
+                          <div key={pointIndex} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                            <span 
+                              style={{
+                                color: isCompleted ? '#C34A36' : '#CCCCCC',
+                                fontSize: '18px',
+                                transition: 'color 0.5s ease',
+                                lineHeight: '1.5',
+                                flexShrink: 0
+                              }}
+                            >
+                              •
+                            </span>
+                            <p 
+                              className="font-poppins"
+                              style={{
+                                fontSize: '14px',
+                                lineHeight: '150%',
+                                color: isCompleted ? '#404040' : '#999999',
+                                transition: 'color 0.5s ease',
+                                flex: 1
+                              }}
+                            >
+                              {point}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

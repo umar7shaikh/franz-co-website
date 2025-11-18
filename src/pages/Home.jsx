@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import Hero from '../components/homecomponents/Hero';
 import Solutions from '../components/homecomponents/Solutions';
@@ -17,27 +17,38 @@ import ContactSection from '../components/homecomponents/ContactSection';
 import Footer from '../components/common/footerMenus ';
 
 const Home = () => {
+  const solutions2Ref = useRef(null);
+  const segmentsRef = useRef(null);
+
+  const scrollToSolutions2 = () => {
+    solutions2Ref.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToSegments = () => {
+    segmentsRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
   
   return (
     <div>
-      
       <Hero />
-      <Solutions />
-      <Segments />
+      <Solutions scrollToSolutions2={scrollToSolutions2} scrollToSegments={scrollToSegments} />
+      <div ref={segmentsRef}>
+        <Segments />
+      </div>
       <Process />
       <Impact />
       <Advantage />
       <Projects />  
       <Equipment /> 
-      <Solutions2 />
+      <div ref={solutions2Ref}>
+        <Solutions2 />
+      </div>
       <Steps />
       <Testimonials />
       <BlogSection />
       <CTASection />  
       <ContactSection />
       <Footer />
-      
-      {/* Page content goes here */}
     </div>
   );
 };
