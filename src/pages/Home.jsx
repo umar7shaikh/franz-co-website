@@ -27,9 +27,9 @@ const Home = () => {
   const scrollToSegments = () => {
     segmentsRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
-  
+
   return (
-    <div>
+    <div style={{ overflowX: 'hidden' }}>
       <Hero />
       <Solutions scrollToSolutions2={scrollToSolutions2} scrollToSegments={scrollToSegments} />
       <div ref={segmentsRef}>
@@ -38,15 +38,15 @@ const Home = () => {
       <Process />
       <Impact />
       <Advantage />
-      <Projects />  
-      <Equipment /> 
+      <Projects />
+      <Equipment />
       <div ref={solutions2Ref}>
         <Solutions2 />
       </div>
       <Steps />
       <Testimonials />
       {/* <BlogSection /> */}
-      <CTASection />  
+      <CTASection />
       <ContactSection />
       <Footer />
     </div>
