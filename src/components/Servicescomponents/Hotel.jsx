@@ -1,5 +1,5 @@
 import React from 'react';
-import HotelImage from '../../assets/Hotel.png'; // Update with your hotel gym image
+import HotelImage from '../../assets/Hotel.png';
 
 const Hotel = () => {
   return (
@@ -9,8 +9,9 @@ const Hotel = () => {
       {/* Main Content Section */}
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
+
           {/* Left Side - Isometric Illustration */}
-          <div className="w-full lg:w-1/2 flex justify-center">
+          <div className="w-full lg:w-1/2 flex justify-center order-2 lg:order-1">
             <div className="w-full lg:w-[856px] h-auto lg:h-[829px] flex-shrink-0">
               <img
                 src={HotelImage}
@@ -22,7 +23,7 @@ const Hotel = () => {
           </div>
 
           {/* Right Side - Content */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-8">
+          <div className="w-full lg:w-1/2 flex flex-col gap-8 order-1 lg:order-2">
             {/* Header */}
             <div>
               <p className="text-sm font-semibold text-[#C34A36] uppercase tracking-wide mb-2 font-poppins">
@@ -32,10 +33,9 @@ const Hotel = () => {
                 Guest Fitness Experiences That Earn 5-Star Reviews
               </h2>
             </div>
-
             {/* Info Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {/* Ideal For */}
+              {/* ...content unchanged */}
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <p className="text-xs font-semibold text-[#C34A36] uppercase mb-2 font-poppins">
                   Ideal For
@@ -44,8 +44,6 @@ const Hotel = () => {
                   Hotels, resorts, service apartments
                 </p>
               </div>
-
-              {/* Space Range */}
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <p className="text-xs font-semibold text-[#C34A36] uppercase mb-2 font-poppins">
                   Space Range
@@ -54,8 +52,6 @@ const Hotel = () => {
                   1,000 – 5,000 sq.ft.
                 </p>
               </div>
-
-              {/* Investment */}
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <p className="text-xs font-semibold text-[#C34A36] uppercase mb-2 font-poppins">
                   Investment
@@ -64,8 +60,6 @@ const Hotel = () => {
                   ₹20 – 70 Lakhs
                 </p>
               </div>
-
-              {/* Timeline */}
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <p className="text-xs font-semibold text-[#C34A36] uppercase mb-2 font-poppins">
                   Timeline
@@ -75,7 +69,6 @@ const Hotel = () => {
                 </p>
               </div>
             </div>
-
             {/* Includes Section */}
             <div>
               <p className="text-xs font-semibold text-[#C34A36] uppercase mb-4 font-poppins">
@@ -113,7 +106,6 @@ const Hotel = () => {
                 ))}
               </div>
             </div>
-
             {/* Add-Ons Available */}
             <div>
               <p className="text-xs font-semibold text-[#C34A36] uppercase mb-4 font-poppins">
@@ -133,7 +125,6 @@ const Hotel = () => {
                 ))}
               </div>
             </div>
-
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mt-4">
               <button

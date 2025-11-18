@@ -5,7 +5,7 @@ const AmenityCTASection = () => (
     style={{
       width: '100%',
       minHeight: 400,
-      padding: '80px 0 0 0',
+      paddingTop: 80,
       background: '#C34A36',
       display: 'flex',
       justifyContent: 'center',
@@ -28,7 +28,8 @@ const AmenityCTASection = () => (
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         opacity: 0.2,
-        pointerEvents: 'none'
+        pointerEvents: 'none',
+        zIndex: 0,
       }}
     />
 
@@ -39,7 +40,7 @@ const AmenityCTASection = () => (
           maxWidth: 1280,
           margin: '0 auto',
           textAlign: 'center',
-          padding: '0 20px'
+          padding: '0 20px',
         }}
       >
         <h2
@@ -47,7 +48,7 @@ const AmenityCTASection = () => (
           style={{
             fontFamily: "Unbounded, sans-serif",
             fontWeight: 700,
-            fontSize: 48,
+            fontSize: '3rem', // 48px
             lineHeight: '120%',
             letterSpacing: '-1%',
             color: '#FFFFFF',
@@ -58,27 +59,32 @@ const AmenityCTASection = () => (
         </h2>
       </div>
 
-      {/* Steps: edge-to-edge bar */}
+      {/* Steps bar */}
       <div
         style={{
           width: '100%',
-          padding: '0 40px',
+          padding: '0 16px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           fontFamily: "Poppins, sans-serif",
           fontWeight: 400,
-          fontSize: 15,
+          fontSize: 14,
           color: "#fff",
           opacity: 0.95,
           marginBottom: 34,
-          gap: 24
+          gap: 16,
+          flexWrap: 'wrap',
         }}
       >
-        <span style={{ opacity: 0.6, whiteSpace: 'nowrap' }}>Step 1 Share your project details.</span>
-        <span style={{ opacity: 0.6, whiteSpace: 'nowrap' }}>Step 2 Receive customized service proposal.</span>
-        <span style={{ opacity: 0.6, whiteSpace: 'nowrap' }}>Step 3 Review designs and equipment options.</span>
-        <span style={{ opacity: 0.6, whiteSpace: 'nowrap' }}>Step 4 Approve and we execute flawlessly</span>
+        {[
+          'Step 1 Share your project details.',
+          'Step 2 Receive customized service proposal.',
+          'Step 3 Review designs and equipment options.',
+          'Step 4 Approve and we execute flawlessly',
+        ].map((step, i) => (
+          <span key={i} style={{ opacity: 0.6, whiteSpace: 'nowrap' }}>{step}</span>
+        ))}
       </div>
 
       {/* Buttons */}
@@ -87,15 +93,16 @@ const AmenityCTASection = () => (
           display: 'flex',
           gap: 14,
           justifyContent: 'center',
+          flexWrap: 'wrap',
           marginBottom: 36
         }}
       >
-        {/* Schedule consultation button: white bg, white text (no border) */}
+        {/* Schedule consultation button */}
         <button
           className="font-poppins"
           style={{
             background: "#fff",
-            color: "Black",
+            color: "black",
             padding: "14px 32px",
             borderRadius: 8,
             fontWeight: 600,
@@ -103,12 +110,15 @@ const AmenityCTASection = () => (
             cursor: "pointer",
             border: 'none',
             boxShadow: "0 1px 8px 0 rgba(0,0,0,.04)",
-            transition: "all 0.3s"
+            transition: "all 0.3s",
+            whiteSpace: 'nowrap',
+            flexGrow: 0,
           }}
         >
           Schedule consultation
         </button>
-        {/* View portfolio: glass effect, blurred, no border */}
+
+        {/* View portfolio button */}
         <button
           className="font-poppins"
           style={{
@@ -124,7 +134,9 @@ const AmenityCTASection = () => (
             WebkitBackdropFilter: 'blur(16px)',
             transition: "all 0.3s",
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            whiteSpace: 'nowrap',
+            flexGrow: 0,
           }}
         >
           View portfolio <span style={{ fontSize: 20, marginLeft: 8 }}>{'>'}</span>

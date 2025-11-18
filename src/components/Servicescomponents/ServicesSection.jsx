@@ -543,48 +543,61 @@ return (
           {/* Tabs */}
           <div
             className="
-                flex
-                rounded-[8px]
-                overflow-hidden
-                border-b
-                border-b-[#DDD]
-                bg-[#0A04030D]
-                
-                w-full
-                h-[56px]
-                mx-auto
-                mt-8
-                justify-center
+              flex
+              rounded-[8px]
+              overflow-x-auto
+              overflow-y-hidden
+              border-b
+              border-b-[#DDD]
+              bg-[#0A04030D]
+              w-full
+              h-[56px]
+              mx-auto
+              mt-8
+              justify-start
+              sm:justify-center
             "
-            style={{ gap: 0 }}
-            >
+            style={{ 
+              gap: 0,
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+          >
+            <style jsx>{`
+              div::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
             {tabs.map((tab, i) => (
-                <button
+              <button
                 key={tab}
                 onClick={() => {
-                    setActiveTab(tab);
-                    setOpenAccordion(0);
+                  setActiveTab(tab);
+                  setOpenAccordion(0);
                 }}
                 className={`
-                    px-6 py-2.5 
-                    text-base font-poppins font-semibold 
-                    transition-colors text-center
-                    rounded-none
-                    whitespace-nowrap
-                    ${activeTab === tab
+                  px-3 py-2.5 
+                  sm:px-6
+                  text-xs sm:text-base 
+                  font-poppins font-semibold 
+                  transition-colors text-center
+                  rounded-none
+                  whitespace-nowrap
+                  flex-shrink-0
+                  ${activeTab === tab
                     ? 'bg-[#F3DAD6] text-[#C34A36]'
                     : 'bg-transparent text-[#0A040366]'
-                    }
+                  }
                 `}
                 style={{
-                    borderRight: i !== tabs.length - 1 ? "1px solid #ececec" : "none",
-                    height: '56px'
+                  borderRight: i !== tabs.length - 1 ? "1px solid #ececec" : "none",
+                  height: '56px'
                 }}
-                >
+              >
                 {tab}
-                </button>
+              </button>
             ))}
-            </div>
+          </div>
 
         </div>
 

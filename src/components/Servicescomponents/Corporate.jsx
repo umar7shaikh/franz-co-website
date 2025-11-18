@@ -1,5 +1,6 @@
 import React from 'react';
-import CorporateImage from '../../assets/Corporate.png'; // Update with your corporate gym image
+import CorporateImage from '../../assets/Corporate.png';
+
 
 const Corporate = () => {
   return (
@@ -10,8 +11,8 @@ const Corporate = () => {
       {/* Main Content Section */}
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
-          {/* Left Side - Content */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-8">
+          {/* Left Side - Content (appears first on mobile) */}
+          <div className="w-full lg:w-1/2 flex flex-col gap-8 order-1">
             {/* Header */}
             <div>
               <p className="text-sm font-semibold text-[#C34A36] uppercase tracking-wide mb-2 font-poppins">
@@ -21,6 +22,7 @@ const Corporate = () => {
                 Executive Wellness Centers That Attract Talent
               </h2>
             </div>
+
 
             {/* Info Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -34,6 +36,7 @@ const Corporate = () => {
                 </p>
               </div>
 
+
               {/* Space Range */}
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <p className="text-xs font-semibold text-[#C34A36] uppercase mb-2 font-poppins">
@@ -43,6 +46,7 @@ const Corporate = () => {
                   2,000 – 8,000 sq.ft.
                 </p>
               </div>
+
 
               {/* Investment */}
               <div className="bg-white rounded-lg p-4 shadow-md">
@@ -54,6 +58,7 @@ const Corporate = () => {
                 </p>
               </div>
 
+
               {/* Timeline */}
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <p className="text-xs font-semibold text-[#C34A36] uppercase mb-2 font-poppins">
@@ -64,6 +69,7 @@ const Corporate = () => {
                 </p>
               </div>
             </div>
+
 
             {/* Includes Section */}
             <div>
@@ -103,6 +109,7 @@ const Corporate = () => {
               </div>
             </div>
 
+
             {/* Add-Ons Available */}
             <div>
               <p className="text-xs font-semibold text-[#C34A36] uppercase mb-4 font-poppins">
@@ -121,6 +128,7 @@ const Corporate = () => {
                 ))}
               </div>
             </div>
+
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mt-4">
@@ -152,13 +160,14 @@ const Corporate = () => {
             </div>
           </div>
 
-          {/* Right Side - Isometric Illustration */}
-          <div className="w-full lg:w-1/2 flex justify-center">
+
+          {/* Right Side - Isometric Illustration (appears second on mobile) */}
+          <div className="w-full lg:w-1/2 flex justify-center order-2">
             <div className="w-full lg:w-[856px] h-auto lg:h-[829px] flex-shrink-0">
               <img
                 src={CorporateImage}
                 alt="Corporate Office Gym"
-                className="w-full h-full object-cover rounded-3xl mix-blend-darken pl-10"
+                className="w-full h-full object-cover rounded-3xl mix-blend-darken lg:pl-10"
                 style={{ height: '110%', width: '95%' }}
               />
             </div>
@@ -168,5 +177,6 @@ const Corporate = () => {
     </div>
   );
 };
+
 
 export default Corporate;

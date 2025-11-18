@@ -1,6 +1,7 @@
 import React from 'react';
 import ResidentialImage from '../../assets/Residential.png';
 
+
 const Residential = () => {
   return (
     <div className="min-h-screen bg-[#F9ECEA] py-16 px-4 sm:px-6 lg:px-8 font-poppins">
@@ -14,23 +15,12 @@ const Residential = () => {
         </p>
       </div>
 
+
       {/* Main Content Section */}
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
-          {/* Left Side - Isometric Illustration */}
-          <div className="w-full lg:w-1/2 flex justify-center">
-            <div className="w-full lg:w-[856px] h-auto lg:h-[829px] flex-shrink-0">
-              <img
-                src={ResidentialImage}
-                alt="Residential Society Gym"
-                className="w-full h-full object-cover rounded-3xl mix-blend-darken"
-                style={{ height: '95%', width: '90%' }} // ensures full fill
-              />
-            </div>
-          </div>
-
-          {/* Right Side - Content */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-8">
+          {/* Right Side - Content (appears first on mobile) */}
+          <div className="w-full lg:w-1/2 flex flex-col gap-8 order-1 lg:order-2">
             {/* Header */}
             <div>
               <p className="text-sm font-semibold text-[#C34A36] uppercase tracking-wide mb-2 font-poppins">
@@ -40,6 +30,7 @@ const Residential = () => {
                 Complete Solution for Apartment Communities
               </h2>
             </div>
+
 
             {/* Info Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -53,6 +44,7 @@ const Residential = () => {
                 </p>
               </div>
 
+
               {/* Space Range */}
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <p className="text-xs font-semibold text-[#C34A36] uppercase mb-2 font-poppins">
@@ -62,6 +54,7 @@ const Residential = () => {
                   1,500 - 5,000 sq.ft.
                 </p>
               </div>
+
 
               {/* Investment */}
               <div className="bg-white rounded-lg p-4 shadow-md">
@@ -73,6 +66,7 @@ const Residential = () => {
                 </p>
               </div>
 
+
               {/* Timeline */}
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <p className="text-xs font-semibold text-[#C34A36] uppercase mb-2 font-poppins">
@@ -83,6 +77,7 @@ const Residential = () => {
                 </p>
               </div>
             </div>
+
 
             {/* Includes Section */}
             <div>
@@ -121,6 +116,7 @@ const Residential = () => {
               </div>
             </div>
 
+
             {/* Add-Ons Available */}
             <div>
               <p className="text-xs font-semibold text-[#C34A36] uppercase mb-4 font-poppins">
@@ -135,40 +131,53 @@ const Residential = () => {
               </div>
             </div>
 
+
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mt-4">
-                <button
-                    className="px-5 py-2 rounded-lg font-semibold text-[#C34A36] bg-[#0A04030D] backdrop-blur-md"
-                    style={{ backgroundColor: "rgba(10, 4, 3, 0.05)" }}
+              <button
+                className="px-5 py-2 rounded-lg font-semibold text-[#C34A36] bg-[#0A04030D] backdrop-blur-md"
+                style={{ backgroundColor: "rgba(10, 4, 3, 0.05)" }}
+              >
+                Get Package Quote
+              </button>
+              <button
+                className="px-5 py-2 rounded-lg font-semibold text-[#C34A36] bg-transparent shadow-none border-none hover:bg-transparent focus:ring-0 flex items-center gap-2"
+                style={{ boxShadow: "none", border: "none" }}
+              >
+                Contact Us
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                    Get Package Quote
-                </button>
-                <button
-                    className="px-5 py-2 rounded-lg font-semibold text-[#C34A36] bg-transparent shadow-none border-none hover:bg-transparent focus:ring-0 flex items-center gap-2"
-                    style={{ boxShadow: "none", border: "none" }}
-                >
-                    Contact Us
-                    <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                    />
-                    </svg>
-                </button>
-                </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
 
+          {/* Left Side - Isometric Illustration (appears second on mobile) */}
+          <div className="w-full lg:w-1/2 flex justify-center order-2 lg:order-1">
+            <div className="w-full lg:w-[856px] h-auto lg:h-[829px] flex-shrink-0">
+              <img
+                src={ResidentialImage}
+                alt="Residential Society Gym"
+                className="w-full h-full object-cover rounded-3xl mix-blend-darken"
+                style={{ height: '95%', width: '90%' }}
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
 
 export default Residential;

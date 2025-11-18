@@ -93,96 +93,96 @@ const starIcons = (count) =>
 
 export default function Comparison() {
   return (
-    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 ">
+    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-10">
         <h1 className="text-4xl md:text-5xl font-bold text-[#3A1610] font-unbounded mb-3">
           Service Comparison Matrix
         </h1>
       </div>
-      <div className="mt-16">
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white text-left rounded-lg">
-            <thead>
-              <tr>
+      <div className="mt-16 overflow-hidden">
+        <table className="table-fixed w-full bg-white text-left rounded-lg text-xs sm:text-base">
+          <thead>
+            <tr>
+              <th
+                className="px-2 sm:px-6 py-4 sm:py-8 text-[#C34A36] font-semibold align-bottom font-unbounded max-w-[120px]"
+                style={{
+                  fontWeight: 500,
+                  fontStyle: 'normal',
+                  lineHeight: '140%',
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                Feature Category
+              </th>
+              {packages.map((pkg, idx) => (
                 <th
-                  className="px-6 py-8 min-h-[110px] text-[#C34A36] font-semibold text-base align-bottom font-unbounded"
+                  key={idx}
+                  className="px-1 sm:px-6 py-2 sm:py-4 text-[#C34A36] font-semibold text-center relative align-top font-unbounded max-w-[140px] truncate"
                   style={{
+                    verticalAlign: 'top',
                     fontWeight: 500,
                     fontStyle: 'normal',
-                    fontSize: '1rem',
                     lineHeight: '140%',
                     letterSpacing: '-0.01em',
                   }}
+                  title={pkg.name}
                 >
-                  Feature Category
+                  <div className="flex flex-col items-center relative truncate" >
+                    <div className="truncate w-full">{pkg.name}</div>
+                    <div>{starIcons(pkg.stars)}</div>
+                  </div>
                 </th>
-                {packages.map((pkg, idx) => (
-                  <th
-                    key={idx}
-                    className="px-6 py-4 min-h-[110px] text-[#C34A36] font-semibold text-base text-center relative align-top font-unbounded"
-                    style={{
-                      verticalAlign: 'top',
-                      fontWeight: 500,
-                      fontStyle: 'normal',
-                      fontSize: '1rem',
-                      lineHeight: '140%',
-                      letterSpacing: '-0.01em',
-                    }}
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {features.map((row, i) => (
+              <tr key={row.key} className={i % 2 === 0 ? 'bg-[#F2F2F2]' : 'bg-white'}>
+                <td
+                  className="px-2 sm:px-6 py-2 sm:py-4 italic font-normal"
+                  style={{ fontFamily: 'Poppins', fontWeight: 400, fontStyle: 'italic', lineHeight: '150%', maxWidth: '120px', whiteSpace: 'normal' }}
+                >
+                  {row.name}
+                </td>
+                {packages.map((pkg, j) => (
+                  <td
+                    key={j}
+                    className="px-2 sm:px-6 py-2 sm:py-4 text-center align-middle font-poppins max-w-[140px] truncate"
+                    title={
+                      typeof pkg.items[row.key] === 'string' || React.isValidElement(pkg.items[row.key])
+                        ? undefined
+                        : pkg.items[row.key]
+                        ? 'Yes'
+                        : 'No'
+                    }
                   >
-                    <div className="flex flex-col items-center relative">
-                      <div>{pkg.name}</div>
-                      <div>{starIcons(pkg.stars)}</div>
-                    </div>
-                  </th>
+                    {typeof pkg.items[row.key] === 'boolean'
+                      ? pkg.items[row.key] ? (
+                          <svg
+                            className="inline-block w-5 h-5 text-[#C34A36]"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        ) : (
+                          '–'
+                        )
+                      : pkg.items[row.key]}
+                  </td>
                 ))}
               </tr>
-            </thead>
-            <tbody>
-              {features.map((row, i) => (
-                <tr key={row.key} className={i % 2 === 0 ? 'bg-[#F2F2F2]' : 'bg-white'}>
-                  <td
-                    className="px-6 py-4 italic font-normal text-base"
-                    style={{ fontFamily: 'Poppins', fontWeight: 400, fontStyle: 'italic', lineHeight: '150%' }}
-                  >
-                    {row.name}
-                  </td>
-                  {packages.map((pkg, j) => (
-                    <td key={j} className="px-6 py-4 text-center align-middle font-poppins">
-                      {typeof pkg.items[row.key] === 'boolean'
-                        ? pkg.items[row.key]
-                          ? (
-                            <svg
-                              className="inline-block w-5 h-5 text-[#C34A36]"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M5 13l4 4L19 7"
-                              />
-                            </svg>
-                          )
-                          : '–'
-                        : pkg.items[row.key]}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-        {/* Single CTA Button: right side */}
-        <div className="flex mt-6 justify-end">
-          <button
-            className="px-6 py-3 rounded-lg font-semibold text-white bg-[#C34A36] transition-colors font-poppins"
-          >
-            Get started
-          </button>
-        </div>
+      {/* Single CTA Button: right side */}
+      <div className="flex mt-6 justify-end">
+        <button className="px-6 py-3 rounded-lg font-semibold text-white bg-[#C34A36] transition-colors font-poppins">
+          Get started
+        </button>
       </div>
     </div>
   );
