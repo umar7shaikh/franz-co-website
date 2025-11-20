@@ -1,7 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import Webflow from '../../assets/Webflow.png';
 import Relume from '../../assets/Relume.png';
 
 const FitnessCta = () => {
+  const navigate = useNavigate();
+  
+  const handleQuoteClick = () => {
+    navigate('/contact');
+  };
+
   return (
     <section 
       className="w-full px-4 sm:px-8 lg:px-16 relative"
@@ -65,14 +72,14 @@ const FitnessCta = () => {
             marginBottom: '16px'
           }}
         >
-          Let’s discuss your project requirements and craft a custom solution that exceeds expectations.
+          Let's discuss your project requirements and craft a custom solution that exceeds expectations.
         </p>
         {/* Buttons */}
-       <div className="flex gap-4 items-center mb-10">
-            {/* Get Custom Quote */}
-            <button 
-                className="font-poppins font-medium transition-all hover:bg-gray-100 text-black"
-                style={{
+        <div className="flex gap-4 items-center mb-10">
+          {/* Get Custom Quote */}
+          <button 
+              className="font-poppins font-medium transition-all hover:bg-gray-100 text-black"
+              style={{
                 fontSize: '14px',
                 backgroundColor: 'white',
                 color: 'black', // explicitly ensure black text
@@ -80,31 +87,32 @@ const FitnessCta = () => {
                 borderRadius: '8px',
                 border: 'none',
                 cursor: 'pointer'
-                }}
-            >
-                Get Custom Quote
-            </button>
-            {/* Download Service Guide (glass effect) */}
-            <button 
-                className="
-                font-poppins font-medium
-                bg-white/30
-                backdrop-blur-md
-                
-                text-white
-                transition-all
-                hover:bg-white/50 hover:text-[#C34A36]
-                "
-                style={{
+              }}
+              onClick={handleQuoteClick}
+          >
+              Get Custom Quote
+          </button>
+          {/* Download Service Guide (glass effect) */}
+          <button 
+              className="
+              font-poppins font-medium
+              bg-white/30
+              backdrop-blur-md
+              
+              text-white
+              transition-all
+              hover:bg-white/50 hover:text-[#C34A36]
+              "
+              style={{
                 fontSize: '14px',
                 padding: '12px 24px',
                 borderRadius: '8px',
                 cursor: 'pointer'
-                }}
-            >
-                Download Service Guide
-            </button>
-            </div>
+              }}
+          >
+              Download Service Guide
+          </button>
+        </div>
 
         {/* Logos */}
         <div 

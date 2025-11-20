@@ -1,10 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PrivateImage from '../../assets/Private.png'; // Replace with your actual Private gym image
 
 const Private = () => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+
   return (
     <div className="min-h-screen bg-[#F9ECEA] py-16 px-4 sm:px-6 lg:px-8 font-poppins">
       {/* Header Section */}
+
 
       {/* Main Content Section */}
       <div className="max-w-7xl mx-auto">
@@ -133,6 +141,7 @@ const Private = () => {
               <button
                 className="px-5 py-2 rounded-lg font-semibold text-[#C34A36] bg-transparent shadow-none border-none hover:bg-transparent focus:ring-0 flex items-center gap-2"
                 style={{ boxShadow: "none", border: "none" }}
+                onClick={handleContactClick}
               >
                 Contact Us
                 <svg

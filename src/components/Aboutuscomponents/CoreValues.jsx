@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { MdVerifiedUser, MdWorkspacePremium, MdGroups, MdAssignmentTurnedIn, MdScience } from 'react-icons/md';
 
 const valuesData = [
@@ -29,6 +30,16 @@ const valuesData = [
 ];
 
 const CoreValues = () => {
+  const navigate = useNavigate();
+  
+  const handleServicesClick = () => {
+    navigate('/services');
+  };
+  
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+
   const mobileStyles = `
     @media (max-width: 767px) {
       .core-values-section {
@@ -149,10 +160,16 @@ const CoreValues = () => {
             Discover the guiding principles that drive our approach and define our commitment to every client. Our core values reflect our passion for transparency, excellence, partnership, accountability, and innovation.
           </p>
           <div className="flex gap-4 mb-2 core-values-buttons">
-            <button className="font-poppins font-semibold text-[15px] bg-[#f1eeed] hover:bg-[#e5e0df] transition-colors px-6 py-3 rounded-lg text-[#C34A36] core-values-primary-btn">
+            <button 
+              className="font-poppins font-semibold text-[15px] bg-[#f1eeed] hover:bg-[#e5e0df] transition-colors px-6 py-3 rounded-lg text-[#C34A36] core-values-primary-btn"
+              onClick={handleServicesClick}
+            >
               Services
             </button>
-            <button className="font-poppins font-semibold text-[15px] bg-transparent hover:bg-[#FFF5F3] transition-colors px-6 py-3 rounded-lg inline-flex items-center gap-2 text-[#C34A36] core-values-secondary-btn">
+            <button 
+              className="font-poppins font-semibold text-[15px] bg-transparent hover:bg-[#FFF5F3] transition-colors px-6 py-3 rounded-lg inline-flex items-center gap-2 text-[#C34A36] core-values-secondary-btn"
+              onClick={handleContactClick}
+            >
               Contact
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FiChevronDown, FiX } from "react-icons/fi";
 
 const faqs = [
@@ -46,6 +47,11 @@ const faqs = [
 
 const FAQs = () => {
   const [openIndex, setOpenIndex] = useState(0); // 0 (first) open by default
+  const navigate = useNavigate();
+  
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
 
   return (
     <section className="w-full py-16 min-h-screen flex flex-col items-center faq-section">
@@ -235,6 +241,7 @@ const FAQs = () => {
               minWidth: 100,
               fontWeight: 500,
             }}
+            onClick={handleContactClick}
           >
             Contact Us
           </button>

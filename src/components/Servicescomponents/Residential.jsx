@@ -1,8 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ResidentialImage from '../../assets/Residential.png';
 
 
+
 const Residential = () => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+  
   return (
     <div className="min-h-screen bg-[#F9ECEA] py-16 px-4 sm:px-6 lg:px-8 font-poppins">
       {/* Header Section */}
@@ -14,6 +22,7 @@ const Residential = () => {
           Custom Fitness and Wellness Solutions for Modern Living
         </p>
       </div>
+
 
 
       {/* Main Content Section */}
@@ -32,6 +41,7 @@ const Residential = () => {
             </div>
 
 
+
             {/* Info Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Ideal For */}
@@ -45,6 +55,7 @@ const Residential = () => {
               </div>
 
 
+
               {/* Space Range */}
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <p className="text-xs font-semibold text-[#C34A36] uppercase mb-2 font-poppins">
@@ -54,6 +65,7 @@ const Residential = () => {
                   1,500 - 5,000 sq.ft.
                 </p>
               </div>
+
 
 
               {/* Investment */}
@@ -67,6 +79,7 @@ const Residential = () => {
               </div>
 
 
+
               {/* Timeline */}
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <p className="text-xs font-semibold text-[#C34A36] uppercase mb-2 font-poppins">
@@ -77,6 +90,7 @@ const Residential = () => {
                 </p>
               </div>
             </div>
+
 
 
             {/* Includes Section */}
@@ -117,6 +131,7 @@ const Residential = () => {
             </div>
 
 
+
             {/* Add-Ons Available */}
             <div>
               <p className="text-xs font-semibold text-[#C34A36] uppercase mb-4 font-poppins">
@@ -132,6 +147,7 @@ const Residential = () => {
             </div>
 
 
+
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mt-4">
               <button
@@ -143,6 +159,7 @@ const Residential = () => {
               <button
                 className="px-5 py-2 rounded-lg font-semibold text-[#C34A36] bg-transparent shadow-none border-none hover:bg-transparent focus:ring-0 flex items-center gap-2"
                 style={{ boxShadow: "none", border: "none" }}
+                onClick={handleContactClick}
               >
                 Contact Us
                 <svg
@@ -162,6 +179,7 @@ const Residential = () => {
             </div>
           </div>
 
+
           {/* Left Side - Isometric Illustration (appears second on mobile) */}
           <div className="w-full lg:w-1/2 flex justify-center order-2 lg:order-1">
             <div className="w-full lg:w-[856px] h-auto lg:h-[829px] flex-shrink-0">
@@ -178,6 +196,7 @@ const Residential = () => {
     </div>
   );
 };
+
 
 
 export default Residential;
