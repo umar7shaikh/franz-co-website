@@ -1,6 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import AboutHeroImage from '../../assets/AboutHero.png';
 
 const AboutHero = () => {
+  const navigate = useNavigate();
+  
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+  
+  const handleServicesClick = () => {
+    navigate('/services');
+  };
+
   return (
     <>
       {/* MOBILE-ONLY STYLES */}
@@ -279,6 +290,7 @@ const AboutHero = () => {
                 style={{
                   color: '#C34A36'
                 }}
+                onClick={handleContactClick}
               >
                 Contact Us
               </button>
@@ -288,6 +300,7 @@ const AboutHero = () => {
                 style={{
                   color: '#C34A36'
                 }}
+                onClick={handleServicesClick}
               >
                 Our Services
                 <svg 
