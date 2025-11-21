@@ -1,16 +1,69 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import HeroBg from '../../assets/HeroBg.png';
+import HomeHeroVideo from '../../assets/homeherovideo.mp4';
 
 const Hero = () => {
   const [isVideoMode, setIsVideoMode] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (isVideoMode && videoRef.current) {
+      videoRef.current.play().catch(error => console.warn('Autoplay blocked:', error));
+    }
+  }, [isVideoMode]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+  };
 
   return (
-    <section
-      className="relative w-full min-h-[90vh] bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${HeroBg})`
-      }}
-    >
+    <section className="relative w-full min-h-[90vh] overflow-hidden">
+      {/* Static Image Background - Mobile Only in Initial State */}
+      {!isVideoMode && (
+        <div
+          className="lg:hidden absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${HeroBg})`
+          }}
+        />
+      )}
+
+      {/* Video Specific Frame as Thumbnail - Desktop Initial State */}
+      {!isVideoMode && (
+        <video
+          className="hidden lg:block absolute inset-0 w-full h-full object-cover"
+          preload="metadata"
+          muted
+          playsInline
+        >
+          {/* Change the time value (in seconds) to display different frame as thumbnail */}
+          {/* Examples: #t=0.5 (half second), #t=2 (2 seconds), #t=5.3 (5.3 seconds) */}
+          <source src={`${HomeHeroVideo}#t=15`} type="video/mp4" />
+        </video>
+      )}
+
+      {/* Video Background - Video Mode Only (Desktop Only) */}
+      {isVideoMode && (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover hidden lg:block"
+          muted={isMuted}
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src={HomeHeroVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
+
       {/* Full Dark Overlay - appears in video mode */}
       <div
         className={`absolute inset-0 bg-black transition-opacity duration-700 ${
@@ -46,21 +99,44 @@ const Hero = () => {
         </button>
       </div>
 
-      {/* Close Button - appears in video mode */}
+      {/* Top Right Controls - Sound and Close Buttons (Video Mode Only) */}
       {isVideoMode && (
-        <button
-          onClick={() => setIsVideoMode(false)}
-          className="fixed top-20 right-6 z-50 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 bg-white/20 backdrop-blur-md hover:bg-white/30"
-        >
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="fixed top-20 right-6 z-50 flex gap-3">
+          {/* Mute/Unmute Button */}
+          <button
+            onClick={toggleMute}
+            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 bg-white/20 backdrop-blur-md hover:bg-white/30"
+            title={isMuted ? 'Unmute' : 'Mute'}
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+            <svg
+              className="w-5 h-5 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMuted ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              )}
+            </svg>
+          </button>
+
+          {/* Close Button */}
+          <button
+            onClick={() => setIsVideoMode(false)}
+            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 bg-white/20 backdrop-blur-md hover:bg-white/30"
+          >
+            <svg
+              className="w-6 h-6 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       )}
 
       {/* Top Right Description - appears in video mode (desktop only) */}
