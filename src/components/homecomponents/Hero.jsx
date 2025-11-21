@@ -45,7 +45,7 @@ const Hero = () => {
         >
           {/* Change the time value (in seconds) to display different frame as thumbnail */}
           {/* Examples: #t=0.5 (half second), #t=2 (2 seconds), #t=5.3 (5.3 seconds) */}
-          <source src={`${HomeHeroVideo}#t=15`} type="video/mp4" />
+          <source src={`${HomeHeroVideo}#t=40`} type="video/mp4" />
         </video>
       )}
 
