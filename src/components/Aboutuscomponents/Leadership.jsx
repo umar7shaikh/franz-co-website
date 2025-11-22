@@ -147,7 +147,7 @@ const Leadership = () => (
       `}
     </style>
 
-    <section className="w-full bg-[#F7EEEC] py-16 px-0 leadership-section">
+    <section id="leadership-section" className="w-full bg-[#F7EEEC] py-16 px-0 leadership-section">
       <div className="max-w-[1440px] mx-auto px-4">
         <h2 className="font-unbounded text-4xl font-bold mb-10 leadership-main-heading" style={{color: "#3A1610"}}>
           Leadership Team

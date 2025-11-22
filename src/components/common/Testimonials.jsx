@@ -222,7 +222,7 @@ const Testimonials = () => {
         `}
       </style>
 
-      <section
+      <section id ="testimonials-section"
         className="testimonials-section"
         style={{
           background: '#F9ECEA',

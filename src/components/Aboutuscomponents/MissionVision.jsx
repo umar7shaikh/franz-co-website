@@ -2,6 +2,13 @@ import MissionVision1 from '../../assets/MissionVision1.png';
 import MissionVision2 from '../../assets/MissionVision2.png';
 
 const MissionVision = () => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <>
       {/* MOBILE-ONLY STYLES */}
@@ -85,6 +92,7 @@ const MissionVision = () => {
                 To partner with real estate developers in creating fitness amenities that enhance property value, accelerate sales velocity, and deliver exceptional experiences to end-users through turnkey solutions built on quality, transparency, and long-term partnership.
               </p>
               <button
+                onClick={() => scrollToSection('leadership-section')}
                 className="font-poppins font-semibold text-[15px] bg-[#C34A36] hover:bg-[#A63D36] text-white transition-colors px-6 py-3 rounded-lg w-fit mission-vision-btn"
               >
                 Meet the Team
@@ -114,6 +122,7 @@ const MissionVision = () => {
                 To become India's most trusted name in commercial fitness facility development, setting the industry standard for quality, innovation, and customer-centricity while making premium wellness accessible to communities across the nation.
               </p>
               <button
+                onClick={() => scrollToSection('testimonials-section')}
                 className="font-poppins font-semibold text-[15px] bg-[#C34A36] hover:bg-[#A63D36] text-white transition-colors px-6 py-3 rounded-lg w-fit mission-vision-btn"
               >
                 Testimonials

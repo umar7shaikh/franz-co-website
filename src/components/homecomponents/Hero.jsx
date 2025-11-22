@@ -10,7 +10,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (isVideoMode && videoRef.current) {
-      setIsVideoLoading(true); // Show loader when video starts loading
+      setIsVideoLoading(true);
       videoRef.current.play().catch(error => console.warn('Autoplay blocked:', error));
     }
   }, [isVideoMode]);
@@ -26,42 +26,32 @@ const Hero = () => {
   };
 
   const handleVideoLoaded = () => {
-    setIsVideoLoading(false); // Hide loader when video is ready
+    setIsVideoLoading(false);
   };
 
   return (
     <section className="relative w-full min-h-[90vh] overflow-hidden">
-      {/* Static Image Background - Mobile Only in Initial State */}
+      {/* HeroBg as Thumbnail - All Devices Initial State */}
       {!isVideoMode && (
         <div
-          className="lg:hidden absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url(${HeroBg})`
           }}
         />
       )}
 
-      {/* HeroBg as Thumbnail - Desktop Initial State */}
-      {!isVideoMode && (
-        <div
-          className="hidden lg:block absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${HeroBg})`
-          }}
-        />
-      )}
-
-      {/* Video Background - Video Mode Only (Desktop Only) */}
+      {/* Video Background - Video Mode (All Devices) */}
       {isVideoMode && (
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover hidden lg:block"
+          className="absolute inset-0 w-full h-full object-cover"
           muted={isMuted}
           loop
           playsInline
           preload="auto"
           poster={HeroBg}
-          onLoadedData={handleVideoLoaded} // Fires when video data is loaded and ready
+          onLoadedData={handleVideoLoaded}
         >
           <source src={HomeHeroVideo} type="video/mp4" />
           Your browser does not support the video tag.
@@ -72,9 +62,8 @@ const Hero = () => {
       {isVideoLoading && (
         <div className="absolute inset-0 flex items-center justify-center z-30 bg-black/30 backdrop-blur-sm">
           <div className="relative">
-            {/* Spinner SVG */}
             <svg
-              className="w-16 h-16 text-white/20 animate-spin"
+              className="w-12 h-12 sm:w-16 sm:h-16 text-white/20 animate-spin"
               viewBox="0 0 100 101"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -100,44 +89,42 @@ const Hero = () => {
         style={{ backdropFilter: isVideoMode ? 'blur(3px)' : 'none' }}
       />
 
-      {/* Play Button - Center of Screen (hidden in video mode and on mobile) */}
-      <div
-        className={`absolute inset-0 items-center justify-center z-20 transition-all duration-500 hidden lg:flex ${
-          isVideoMode ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
-        }`}
-      >
-        <button
-          onClick={() => setIsVideoMode(true)}
-          className="group relative w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 p-4"
-          style={{
-            background: 'rgba(255, 255, 255, 0.15)',
-            backdropFilter: 'blur(10px)',
-            border: '2px solid rgba(255, 255, 255, 0.3)',
-            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-            opacity: 1
-          }}
-        >
-          <svg
-            className="w-6 h-6 text-white ml-0.5"
-            fill="currentColor"
-            viewBox="0 0 24 24"
+      {/* Play Button - Center of Screen (ALL DEVICES, hidden only when video plays) */}
+      {!isVideoMode && (
+        <div className="absolute inset-0 flex items-center justify-center z-20">
+          <button
+            onClick={() => setIsVideoMode(true)}
+            className="group relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 p-4"
+            style={{
+              background: 'rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(10px)',
+              border: '2px solid rgba(255, 255, 255, 0.3)',
+              boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+              opacity: 1
+            }}
           >
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </button>
-      </div>
+            <svg
+              className="w-5 h-5 sm:w-6 sm:h-6 text-white ml-0.5"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </button>
+        </div>
+      )}
 
-      {/* Top Right Controls - Sound and Close Buttons (Video Mode Only) */}
+      {/* Top Right Controls - Sound and Close Buttons (Video Mode, All Devices) */}
       {isVideoMode && (
-        <div className="fixed top-20 right-6 z-50 flex gap-3">
+        <div className="fixed top-16 right-4 sm:top-24 sm:right-6 z-50 flex gap-2 sm:gap-3">
           {/* Mute/Unmute Button */}
           <button
             onClick={toggleMute}
-            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 bg-white/20 backdrop-blur-md hover:bg-white/30"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 bg-white/20 backdrop-blur-md hover:bg-white/30"
             title={isMuted ? 'Unmute' : 'Mute'}
           >
             <svg
-              className="w-5 h-5 text-white"
+              className="w-4 h-4 sm:w-5 sm:h-5 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -153,10 +140,10 @@ const Hero = () => {
           {/* Close Button */}
           <button
             onClick={() => setIsVideoMode(false)}
-            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 bg-white/20 backdrop-blur-md hover:bg-white/30"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 bg-white/20 backdrop-blur-md hover:bg-white/30"
           >
             <svg
-              className="w-6 h-6 text-white"
+              className="w-5 h-5 sm:w-6 sm:h-6 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -289,11 +276,11 @@ const Hero = () => {
         </div>
       )}
 
-      {/* VIDEO MODE - Repositioned Layout (Desktop only) */}
+      {/* VIDEO MODE - Repositioned Layout */}
       {isVideoMode && (
         <>
-          {/* Left Content - Centered */}
-          <div className="absolute left-8 lg:left-16 top-1/2 -translate-y-1/2 z-20 transition-all duration-700">
+          {/* Left Content - Centered (Desktop Only) */}
+          <div className="hidden lg:block absolute left-8 lg:left-16 top-1/2 -translate-y-1/2 z-20 transition-all duration-700">
             <div className="flex flex-col justify-center gap-4 lg:gap-5 max-w-[90vw] lg:max-w-[600px]">
               <h1
                 className="font-unbounded font-semibold text-white text-[32px] lg:text-[52px]"
@@ -309,6 +296,36 @@ const Hero = () => {
 
               <p
                 className="font-poppins font-medium text-[14px] lg:text-[16px]"
+                style={{
+                  color: '#F3DAD6',
+                  lineHeight: '150%',
+                  letterSpacing: '0px'
+                }}
+              >
+                Premium Turnkey Gym Solutions for Commercial Real Estate Developers | From Blueprint to Grand Opening
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom Content - Mobile Video Mode */}
+          <div className="lg:hidden absolute left-0 bottom-0 w-full px-4 py-6 z-20"
+            style={{
+              background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%)'
+            }}
+          >
+            <div className="flex flex-col gap-3 text-center">
+              <h2
+                className="font-unbounded font-semibold text-white text-[18px]"
+                style={{
+                  lineHeight: '120%',
+                  letterSpacing: '-0.32px'
+                }}
+              >
+                Elevate your property value with world-class fitness amenities
+              </h2>
+
+              <p
+                className="font-poppins font-medium text-[11px]"
                 style={{
                   color: '#F3DAD6',
                   lineHeight: '150%',
