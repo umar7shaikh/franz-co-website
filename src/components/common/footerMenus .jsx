@@ -1,5 +1,5 @@
 import { FiInstagram, FiLinkedin, FiYoutube, FiFacebook, FiTwitter } from "react-icons/fi";
-// import Logo from '../../assets/Logo.png'; // If you have a logo asset
+import logo from "../../assets/logo.jpg";
 
 const footerMenus = [
   {
@@ -280,11 +280,11 @@ const Footer = () => {
           {/* Logo */}
           <div
             className="footer-logo"
-            style={{ flex: "0 0 120px", fontFamily: "cursive", fontWeight: 600, fontSize: 26, marginRight: 10, marginTop: 3 }}
+            style={{ flex: "0 0 120px", marginRight: 10, marginTop: 3 }}
           >
-            Logo
-            {/* <img src={Logo} width={80} alt="Logo" /> */}
+            <img src={logo} width={80} alt="Logo" style={{ objectFit: "contain" }} />
           </div>
+
           {/* Menus */}
           <div
             className="footer-menus"

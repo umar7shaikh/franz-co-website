@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import logo from "../../assets/logo.jpg";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -67,7 +68,7 @@ const Navbar = () => {
         <nav className="max-w-[1920px] mx-auto h-[72px] flex items-center px-4 nav-inner">
           {/* Logo */}
           <Link to="/" className="flex items-center h-[36px] mr-10 font-poppins">
-            <span className="font-[800] text-2xl">Logo</span>
+            <img src={logo} alt="Logo" className="h-[36px] w-auto object-contain" />
           </Link>
 
           {/* Desktop Nav */}
